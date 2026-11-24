@@ -481,6 +481,7 @@
 .dfp-actions {
   display: flex;
   min-width: 0;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem;
   margin-top: 0.75rem;
@@ -499,6 +500,7 @@
   flex-shrink: 0;
   margin-left: auto;
   padding: 0.375rem 0.75rem;
+  white-space: nowrap;
   border-radius: 0.375rem;
   background: var(--dfp-primary);
   color: var(--dfp-primary-contrast);
@@ -522,8 +524,14 @@
   .dfp-body {
     flex-direction: row;
   }
+  /*
+   * Columns are sized in rem but the popover width is in px, so with a larger root
+   * font size (or browser zoom) fixed widths overflow and clip the actions. The
+   * calendar may shrink and the summary takes whatever space is left.
+   */
   .dfp-options {
     display: block;
+    flex: 0 0 9rem;
     width: 9rem;
     overflow-x: visible;
     padding: 0.5rem 0;
@@ -538,13 +546,15 @@
     text-align: left;
   }
   .dfp-calendar {
-    width: 18rem;
+    flex: 0 1 18rem;
+    min-width: 16rem;
   }
   .dfp-select {
     flex: none;
   }
   .dfp-summary {
-    width: 11rem;
+    flex: 1 1 11rem;
+    min-width: 0;
     border-top: 0;
     border-left: 1px solid var(--dfp-divider);
   }

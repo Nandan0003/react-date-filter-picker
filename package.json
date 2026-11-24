@@ -1,6 +1,6 @@
 {
   "name": "react-date-filter-picker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A React date filter picker with On / Before / After / Between and quick ranges (Last 7 / Last 30 / Next 7 days). Zero dependencies, typed, themable with CSS variables.",
   "keywords": [
     "react",

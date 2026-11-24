@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. This project follows [Semantic Versioning](https://semver.org/).
 
+## 1.0.1
+
+- Fix: on desktop, the Apply button was clipped off the right edge of the popover when the app's root font size was larger than 16px (or the user had enlarged their default font). The columns are sized in `rem` but the popover in `px`, so they overflowed. The calendar column can now shrink, the summary column takes the remaining space, and the Clear / Apply row wraps instead of clipping. Layout at the default 16px is unchanged.
+
 ## 1.0.0
 
 Initial release.
