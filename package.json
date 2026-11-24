@@ -14,14 +14,14 @@
     "typescript"
   ],
   "license": "MIT",
-  "author": "YOUR_NAME <you@example.com>",
-  "homepage": "https://github.com/YOUR_GITHUB_USER/react-date-filter-picker#readme",
+  "author": "Nandan Kumar M <nandankumar3m@gmail.com> (https://github.com/Nandan0003)",
+  "homepage": "https://github.com/Nandan0003/react-date-filter-picker#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/YOUR_GITHUB_USER/react-date-filter-picker.git"
+    "url": "git+https://github.com/Nandan0003/react-date-filter-picker.git"
   },
   "bugs": {
-    "url": "https://github.com/YOUR_GITHUB_USER/react-date-filter-picker/issues"
+    "url": "https://github.com/Nandan0003/react-date-filter-picker/issues"
   },
   "type": "module",
   "main": "./dist/index.cjs",

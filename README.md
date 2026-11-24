@@ -2,11 +2,17 @@
 
 A compact React **date filter** field: pick a mode (On, Before, After, On or Before, On or After, Between, or a quick range), choose dates on a calendar, and get back a typed value plus a ready-made label.
 
+| Light | Dark |
+|---|---|
+| ![Date filter picker, light theme, range selected](https://raw.githubusercontent.com/Nandan0003/react-date-filter-picker/main/screenshots/01-plain-react19-range.png) | ![Date filter picker, dark theme, range selected](https://raw.githubusercontent.com/Nandan0003/react-date-filter-picker/main/screenshots/19-dark-shadcn-auto.png) |
+
+More screenshots (brand colours, dialogs, drawers, mobile) are in [`screenshots/`](https://github.com/Nandan0003/react-date-filter-picker/tree/main/screenshots).
+
 - **Zero runtime dependencies.** Only `react` and `react-dom` as peers (React 18 or 19).
-- **Works anywhere.** Plain CSS with no Tailwind or shadcn/ui required, and it works alongside both.
+- **No framework requirements.** Plain CSS, so no Tailwind or shadcn/ui setup is needed. It also works alongside both.
 - **Works inside modals.** It is usable inside Radix / shadcn Dialog, Sheet, AlertDialog and vaul Drawer. Escape closes the picker first, not the dialog.
 - **TypeScript types included.** Ships ESM and CommonJS builds.
-- **Light and dark themes.** It follows your app's dark mode automatically (shadcn, Tailwind, next-themes, daisyUI, Bootstrap, MUI), or you can force a theme with a prop.
+- **Light and dark themes.** It follows your app's dark mode automatically by recognising the common dark-mode markers (`.dark`, `data-theme`, `data-bs-theme`, `data-mui-color-scheme`), or you can force a theme with a prop.
 - **Themable.** Uses `--dfp-*` CSS variables, which you can set globally or per instance, or set one `accentColor`.
 - **Responsive.** Three-column popover on desktop, stacked layout on mobile. It opens above or below the field depending on available space.
 - **Accessible.** The label is linked to the trigger, the popover is a labelled `dialog`, focus moves into the popover when it opens and back to the field when it closes, and the picker is fully keyboard-operable.
@@ -103,7 +109,15 @@ Dates are local-time `Date` objects at midnight. Convert them to strings or UTC 
 
 - `DATE_FILTER_OPTIONS`: readonly array of every mode.
 - `formatDate(date)`: formats a date as `dd Mon yyyy`, the same format the labels use.
-- Types: `DateFilterValue`, `DateFilterOption`, `DateFilterPickerProps`.
+- Types: `DateFilterValue`, `DateFilterOption`, `DateFilterPickerProps`, `DateFilterTheme`.
+
+### TypeScript
+
+Type declarations ship with the package, for both `import` and `require`, so there is no separate `@types` package to install. Import types with `import type`:
+
+```ts
+import type { DateFilterValue, DateFilterOption, DateFilterPickerProps } from "react-date-filter-picker";
+```
 
 Example of limiting the modes:
 
@@ -316,6 +330,36 @@ Escape closes the picker without closing the dialog; a second Escape closes the 
 - Quick ranges are computed when chosen, and the calendar is read-only for them.
 - Today is outlined on the calendar.
 
+## Compatibility
+
+**Tested.** Each setup below installed the packed package with `npm install`, built for production, and was checked with mouse and keyboard in Chrome.
+
+| Setup | Versions |
+|---|---|
+| React | 18.3 and 19.3 |
+| Bundler | Vite 8, TypeScript (strict) |
+| Plain React app | no Tailwind, no shadcn/ui |
+| Tailwind CSS | v4 |
+| shadcn/ui | Dialog, Sheet, AlertDialog (Radix), Drawer (vaul) |
+
+**Browsers.** The picker uses standard CSS. Brand-colour shading uses `color-mix()`, which is available in Chrome/Edge 111+, Safari 16.2+ and Firefox 113+. In older browsers the accent still applies to the main colour and focus ring, and the other shades keep the built-in green. Automated testing so far has been in Chrome only.
+
+**Not yet tested:**
+
+- Firefox and Safari
+- Next.js and server rendering (the bundle includes a `"use client"` directive)
+- Tailwind CSS v3
+- pnpm and yarn installs
+- Jest / Vitest with jsdom
+
+Reports are welcome in [issues](https://github.com/Nandan0003/react-date-filter-picker/issues).
+
+## Links
+
+- Source: https://github.com/Nandan0003/react-date-filter-picker
+- Issues: https://github.com/Nandan0003/react-date-filter-picker/issues
+- Changelog: [CHANGELOG.md](https://github.com/Nandan0003/react-date-filter-picker/blob/main/CHANGELOG.md)
+
 ## License
 
-[MIT](./LICENSE)
+[MIT](https://github.com/Nandan0003/react-date-filter-picker/blob/main/LICENSE) © Nandan Kumar M

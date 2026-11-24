@@ -11,10 +11,7 @@ This file is for maintainers and is **not** included in the npm package, because
    npm login
    npm whoami
    ```
-4. Replace the placeholders:
-   - `package.json`: `author`, `homepage`, `repository.url`, `bugs.url` (`YOUR_NAME`, `YOUR_GITHUB_USER`)
-   - `LICENSE`: `YOUR_NAME`
-5. Recommended: push this folder to its own public GitHub repo so the `repository` link works. Provenance also needs it (step 5).
+4. Package metadata is filled in: author, `repository`, `bugs` and `homepage` point to https://github.com/Nandan0003/react-date-filter-picker, and `LICENSE` names Nandan Kumar M. The source lives in that public repository, which provenance (step 5) needs.
 
 ### Package name
 
