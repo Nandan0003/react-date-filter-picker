@@ -1,0 +1,564 @@
+/*
+ * react-date-filter-picker — default styles.
+ * Theme by overriding the --dfp-* variables (globally, under your dark selector,
+ * on a wrapper, or via the `className` / `popoverClassName` props).
+ *
+ * Every rule that defines variables uses `:where()` (zero specificity), so any
+ * override you write wins.
+ */
+
+/* ---------- Non-colour tokens ---------- */
+:where(:root) {
+  --dfp-radius: 0.5rem;
+  --dfp-popover-radius: 0.75rem;
+  --dfp-font-size: 0.875rem;
+  /* Same stack as Tailwind's default `font-sans`. Set to `initial` to use your app's font. */
+  --dfp-font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
+  --dfp-z-index: 50;
+  --dfp-popover-width: 620px;
+  /* Dark text used on light accents, in both themes. */
+  --dfp-on-light: #1f2937;
+}
+
+/* ---------- Light theme (default; also `theme="light"` and `theme="system"` in a light OS) ---------- */
+:where(:root),
+:where(.dfp-theme-light),
+:where(.dfp-theme-system) {
+  --dfp-color-scheme: light;
+  --dfp-primary: #15803d;
+  --dfp-primary-hover: #166534;
+  --dfp-primary-disabled: #86efac;
+  --dfp-primary-contrast: #ffffff;
+  --dfp-primary-soft: #f0fdf4;
+  --dfp-primary-soft-text: #15803d;
+  --dfp-range: #dcfce7;
+  --dfp-range-text: #166534;
+  --dfp-today-ring: #22c55e;
+  --dfp-focus-ring: #16a34a;
+
+  --dfp-surface: #ffffff;
+  --dfp-border: #e5e7eb;
+  --dfp-border-hover: #d1d5db;
+  --dfp-divider: #f3f4f6;
+  --dfp-hover: #f3f4f6;
+  --dfp-hover-soft: #f9fafb;
+
+  --dfp-text: #374151;
+  --dfp-text-strong: #1f2937;
+  --dfp-heading: #111827;
+  --dfp-text-muted: #6b7280;
+  --dfp-text-subtle: #9ca3af;
+  --dfp-skeleton: rgba(107, 114, 128, 0.2);
+  --dfp-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  /* Accent hover is mixed toward this colour (darker in light theme). */
+  --dfp-accent-shade: #000000;
+}
+
+/*
+ * ---------- Dark theme ----------
+ * Applied automatically (theme="auto", the default) under the app's dark marker:
+ *   .dark                         shadcn/ui, Tailwind class strategy, next-themes
+ *   [data-theme="dark"]           daisyUI and many others
+ *   [data-bs-theme="dark"]        Bootstrap 5.3+
+ *   [data-mui-color-scheme="dark"] MUI CSS variables
+ * and by `theme="dark"`, or `theme="system"` in a dark OS.
+ */
+:where(.dark, [data-theme="dark"], [data-bs-theme="dark"], [data-mui-color-scheme="dark"]),
+:where(.dfp-theme-dark) {
+  --dfp-color-scheme: dark;
+  --dfp-primary: #15803d;
+  --dfp-primary-hover: #16a34a;
+  --dfp-primary-disabled: #14532d;
+  --dfp-primary-contrast: #ffffff;
+  --dfp-primary-soft: #052e16;
+  --dfp-primary-soft-text: #4ade80;
+  --dfp-range: #14532d;
+  --dfp-range-text: #bbf7d0;
+  --dfp-today-ring: #22c55e;
+  --dfp-focus-ring: #22c55e;
+
+  --dfp-surface: #171717;
+  --dfp-border: #404040;
+  --dfp-border-hover: #525252;
+  --dfp-divider: #262626;
+  --dfp-hover: #262626;
+  --dfp-hover-soft: #1f1f1f;
+
+  --dfp-text: #d4d4d4;
+  --dfp-text-strong: #e5e5e5;
+  --dfp-heading: #fafafa;
+  --dfp-text-muted: #a3a3a3;
+  --dfp-text-subtle: #8a8a8a;
+  --dfp-skeleton: rgba(255, 255, 255, 0.12);
+  --dfp-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.5);
+  --dfp-accent-shade: #ffffff;
+}
+/* theme="light" inside a dark app: re-assert light on the element itself. */
+:where(.dfp-theme-light) {
+  --dfp-color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :where(.dfp-theme-system) {
+    --dfp-color-scheme: dark;
+    --dfp-primary: #15803d;
+    --dfp-primary-hover: #16a34a;
+    --dfp-primary-disabled: #14532d;
+    --dfp-primary-contrast: #ffffff;
+    --dfp-primary-soft: #052e16;
+    --dfp-primary-soft-text: #4ade80;
+    --dfp-range: #14532d;
+    --dfp-range-text: #bbf7d0;
+    --dfp-today-ring: #22c55e;
+    --dfp-focus-ring: #22c55e;
+
+    --dfp-surface: #171717;
+    --dfp-border: #404040;
+    --dfp-border-hover: #525252;
+    --dfp-divider: #262626;
+    --dfp-hover: #262626;
+    --dfp-hover-soft: #1f1f1f;
+
+    --dfp-text: #d4d4d4;
+    --dfp-text-strong: #e5e5e5;
+    --dfp-heading: #fafafa;
+    --dfp-text-muted: #a3a3a3;
+    --dfp-text-subtle: #8a8a8a;
+    --dfp-skeleton: rgba(255, 255, 255, 0.12);
+    --dfp-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.5);
+    --dfp-accent-shade: #ffffff;
+  }
+}
+
+/*
+ * ---------- Accent mode — one brand colour drives every shade ----------
+ * Enabled when `accentColor` is passed or `--dfp-accent` is set; the built-in
+ * palettes above are untouched otherwise. Tints mix against the current surface,
+ * so they work in both themes.
+ */
+:where(.dfp-accent) {
+  --dfp-primary: var(--dfp-accent);
+  --dfp-primary-soft-text: var(--dfp-accent);
+  --dfp-focus-ring: var(--dfp-accent);
+  --dfp-today-ring: var(--dfp-accent);
+  --dfp-primary-contrast: var(--dfp-accent-contrast, #ffffff);
+}
+@supports (color: color-mix(in oklab, red, blue)) {
+  :where(.dfp-accent) {
+    --dfp-primary-hover: color-mix(in oklab, var(--dfp-accent) 82%, var(--dfp-accent-shade));
+    --dfp-primary-disabled: color-mix(in oklab, var(--dfp-accent) 45%, var(--dfp-surface));
+    --dfp-primary-soft: color-mix(in oklab, var(--dfp-accent) 8%, var(--dfp-surface));
+    --dfp-range: color-mix(in oklab, var(--dfp-accent) 18%, var(--dfp-surface));
+    --dfp-range-text: color-mix(in oklab, var(--dfp-accent) 70%, var(--dfp-text-strong));
+    --dfp-today-ring: color-mix(in oklab, var(--dfp-accent) 75%, var(--dfp-surface));
+  }
+}
+/*
+ * Light accent (`.dfp-accent--light`, set by the component): white text would fail
+ * on the accent, so the default text on it is dark — in both themes.
+ */
+:where(.dfp-accent--light) {
+  --dfp-primary-contrast: var(--dfp-accent-contrast, var(--dfp-on-light));
+}
+/*
+ * Low-contrast accent (`.dfp-accent--low`, set by the component): the accent is too
+ * close to the surface (a light accent on a light picker, or a dark accent on a
+ * dark one). Text-type shades and rings are mixed toward the theme's text colour.
+ */
+@supports (color: color-mix(in oklab, red, blue)) {
+  :where(.dfp-accent--low) {
+    --dfp-primary-soft-text: color-mix(in oklab, var(--dfp-accent) 35%, var(--dfp-text-strong));
+    --dfp-range-text: color-mix(in oklab, var(--dfp-accent) 35%, var(--dfp-text-strong));
+    --dfp-primary-hover: color-mix(in oklab, var(--dfp-accent) 85%, var(--dfp-text-strong));
+    --dfp-focus-ring: color-mix(in oklab, var(--dfp-accent) 55%, var(--dfp-text-strong));
+    --dfp-today-ring: color-mix(in oklab, var(--dfp-accent) 55%, var(--dfp-text-strong));
+  }
+}
+
+
+.dfp-root,
+.dfp-popover {
+  color-scheme: var(--dfp-color-scheme);
+  font-family: var(--dfp-font-family);
+  font-size: var(--dfp-font-size);
+  line-height: 1.25rem;
+  box-sizing: border-box;
+}
+.dfp-root *,
+.dfp-root *::before,
+.dfp-root *::after,
+.dfp-popover *,
+.dfp-popover *::before,
+.dfp-popover *::after {
+  box-sizing: border-box;
+}
+.dfp-root button,
+.dfp-popover button,
+.dfp-popover select {
+  font: inherit;
+  margin: 0;
+}
+.dfp-popover button {
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.dfp-root :focus-visible,
+.dfp-popover :focus-visible {
+  outline: 2px solid var(--dfp-focus-ring);
+  outline-offset: 2px;
+}
+
+/* ---------- Field ---------- */
+.dfp-root {
+  display: block;
+  width: 100%;
+  min-width: 0;
+}
+.dfp-label {
+  display: block;
+  margin-bottom: 0.25rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--dfp-text-muted);
+}
+.dfp-trigger {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  height: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0 0.75rem;
+  border: 1px solid var(--dfp-border);
+  border-radius: var(--dfp-radius);
+  background: var(--dfp-surface);
+  cursor: pointer;
+  transition: border-color 150ms;
+}
+.dfp-trigger:hover:not(:disabled) {
+  border-color: var(--dfp-border-hover);
+}
+.dfp-trigger--open,
+.dfp-trigger--open:hover:not(:disabled) {
+  border-color: var(--dfp-focus-ring);
+  box-shadow: 0 0 0 1px var(--dfp-focus-ring);
+}
+.dfp-trigger:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+.dfp-trigger-text {
+  flex: 1 1 0%;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+  color: var(--dfp-text-strong);
+}
+.dfp-trigger-text--placeholder {
+  color: var(--dfp-text-subtle);
+}
+.dfp-trigger-icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var(--dfp-text-subtle);
+}
+.dfp-skeleton {
+  width: 100%;
+  height: 2rem;
+  border-radius: 0.375rem;
+  background: var(--dfp-skeleton);
+  animation: dfp-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes dfp-pulse {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* ---------- Popover ---------- */
+.dfp-popover {
+  position: fixed;
+  z-index: var(--dfp-z-index);
+  display: flex;
+  flex-direction: column;
+  width: min(var(--dfp-popover-width), calc(100vw - 1rem));
+  max-height: calc(100vh - 1rem);
+  overflow: auto;
+  border: 1px solid var(--dfp-border);
+  border-radius: var(--dfp-popover-radius);
+  background: var(--dfp-surface);
+  color: var(--dfp-text);
+  box-shadow: var(--dfp-shadow);
+  /* Clickable even when a modal (e.g. Radix Dialog) sets pointer-events: none on <body>. */
+  pointer-events: auto;
+  /* Don't inherit text styling from the container it is portaled into (e.g. a dialog). */
+  text-align: left;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: normal;
+}
+.dfp-header {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.625rem 1rem;
+  border-bottom: 1px solid var(--dfp-divider);
+}
+.dfp-title {
+  margin: 0;
+  font-size: var(--dfp-font-size);
+  font-weight: 600;
+  color: var(--dfp-heading);
+}
+.dfp-popover .dfp-close {
+  display: inline-flex;
+  padding: 0.25rem;
+  border-radius: 0.375rem;
+  color: var(--dfp-text-subtle);
+  transition: background-color 150ms, color 150ms;
+}
+.dfp-popover .dfp-close:hover {
+  background: var(--dfp-hover);
+  color: var(--dfp-text-muted);
+}
+.dfp-body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* Filter options */
+.dfp-options {
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.25rem;
+  min-width: 0;
+  overflow-x: auto;
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--dfp-divider);
+}
+.dfp-popover .dfp-option {
+  flex-shrink: 0;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  white-space: nowrap;
+  color: var(--dfp-text-muted);
+  transition: background-color 150ms, color 150ms;
+}
+.dfp-popover .dfp-option:hover {
+  background: var(--dfp-hover-soft);
+}
+.dfp-popover .dfp-option--active,
+.dfp-popover .dfp-option--active:hover {
+  background: var(--dfp-primary-soft);
+  color: var(--dfp-primary-soft-text);
+  font-weight: 500;
+}
+
+/* Calendar */
+.dfp-calendar {
+  flex-shrink: 0;
+  min-width: 0;
+  padding: 0.75rem 1rem;
+}
+.dfp-nav {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+.dfp-popover .dfp-nav-btn {
+  display: inline-flex;
+  flex-shrink: 0;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  color: var(--dfp-text-muted);
+}
+.dfp-popover .dfp-nav-btn:hover {
+  background: var(--dfp-hover);
+}
+.dfp-nav-btn--next {
+  margin-left: auto;
+}
+.dfp-select {
+  flex: 1 1 0%;
+  min-width: 0;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--dfp-border);
+  border-radius: 0.375rem;
+  background: var(--dfp-surface);
+  color: var(--dfp-text);
+  font-weight: 500;
+  text-overflow: ellipsis;
+}
+.dfp-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  row-gap: 0.25rem;
+  text-align: center;
+}
+.dfp-weekday {
+  padding-bottom: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--dfp-text-subtle);
+}
+.dfp-popover .dfp-day {
+  display: flex;
+  width: 2rem;
+  height: 2rem;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  color: var(--dfp-text);
+  transition: background-color 150ms, color 150ms;
+}
+.dfp-popover .dfp-day:hover:not(:disabled) {
+  background: var(--dfp-hover);
+}
+.dfp-popover .dfp-day:disabled {
+  cursor: default;
+}
+.dfp-popover .dfp-day--today {
+  box-shadow: inset 0 0 0 1px var(--dfp-today-ring);
+}
+.dfp-popover .dfp-day--in-range,
+.dfp-popover .dfp-day--in-range:hover:not(:disabled) {
+  background: var(--dfp-range);
+  color: var(--dfp-range-text);
+}
+.dfp-popover .dfp-day--selected,
+.dfp-popover .dfp-day--selected:hover:not(:disabled) {
+  background: var(--dfp-primary);
+  color: var(--dfp-primary-contrast);
+  font-weight: 500;
+}
+
+/* Summary + actions */
+.dfp-summary {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  min-width: 0;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--dfp-divider);
+}
+.dfp-summary-fields {
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  min-width: 0;
+}
+.dfp-summary-field {
+  flex: 1 1 0%;
+  min-width: 0;
+}
+.dfp-summary-caption {
+  margin-bottom: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--dfp-text-subtle);
+}
+.dfp-summary-value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
+  color: var(--dfp-text-strong);
+}
+.dfp-actions {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--dfp-divider);
+}
+.dfp-popover .dfp-clear {
+  flex-shrink: 0;
+  padding: 0.375rem 0.5rem;
+  color: var(--dfp-text-muted);
+}
+.dfp-popover .dfp-clear:hover {
+  color: var(--dfp-text);
+}
+.dfp-popover .dfp-apply {
+  flex-shrink: 0;
+  margin-left: auto;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  background: var(--dfp-primary);
+  color: var(--dfp-primary-contrast);
+  font-weight: 500;
+  transition: background-color 150ms;
+}
+.dfp-popover .dfp-apply:hover:not(:disabled) {
+  background: var(--dfp-primary-hover);
+}
+.dfp-popover .dfp-apply:disabled {
+  background: var(--dfp-primary-disabled);
+  cursor: not-allowed;
+}
+
+/* ---------- Desktop layout (≥ 768px): three columns ---------- */
+@media (min-width: 768px) {
+  .dfp-popover {
+    max-height: none;
+    overflow: hidden;
+  }
+  .dfp-body {
+    flex-direction: row;
+  }
+  .dfp-options {
+    display: block;
+    width: 9rem;
+    overflow-x: visible;
+    padding: 0.5rem 0;
+    border-bottom: 0;
+    border-right: 1px solid var(--dfp-divider);
+  }
+  .dfp-popover .dfp-option {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 0;
+    text-align: left;
+  }
+  .dfp-calendar {
+    width: 18rem;
+  }
+  .dfp-select {
+    flex: none;
+  }
+  .dfp-summary {
+    width: 11rem;
+    border-top: 0;
+    border-left: 1px solid var(--dfp-divider);
+  }
+  .dfp-summary-fields {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  .dfp-summary-field {
+    flex: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dfp-skeleton {
+    animation: none;
+  }
+}
